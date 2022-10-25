@@ -1,27 +1,50 @@
-// Define Genre Models..
-const genres = [
-    {
-        id: 1,
-        name: "Action",
-    },
-    {
-        id: 2,
-        name: "Horror",
-    },
-    {
-        id: 3,
-        name: "Drama",
-    },
-    {
-        id: 4,
-        name: "Thriller",
-    },
-    {
-        id: 5,
-        name: "Adventure",
-    },
-];
+// Require Genre Model..
+const genreModel = require('./genre.mongo');
+
+// Database CRUD..
+async function getGenres() {
+    return await genreModel.find({}, {
+        '_id': 0,
+        '__v': 0,
+    });
+}
+
+async function getGenre(name) {
+    return await genreModel.find({
+        name,
+    }, {
+        '_id': 0,
+        '__v': 0,
+    });
+}
+
+async function saveGenre(genre) {
+    return await genreModel.findOneAndUpdate({
+        name: genre.name,
+    }, genre, {
+        new: true,
+        upsert: true,
+    });
+}
+
+async function putGenre(req) {
+    return await genreModel.findOneAndUpdate({
+        name: req.params.id,
+    }, req.body, {
+        new: true,
+    });
+}
+
+async function delGenre(name) {
+    return await genreModel.findOneAndDelete({
+        name,
+    });
+}
 
 module.exports = {
-    genres,
+    getGenres,
+    getGenre,
+    saveGenre,
+    putGenre,
+    delGenre,
 };

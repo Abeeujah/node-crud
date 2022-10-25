@@ -1,5 +1,6 @@
-// Require Express..
+// Require Express and Morgan..
 const express = require('express');
+const morgan = require('morgan');
 
 // Require Router..
 const genreRouter = require('./routes/genre.route');
@@ -9,12 +10,7 @@ const app = express();
 
 // Use Middleware..
 app.use(express.json());
-// app.use('/', (req, res) => {
-//     console.log(req.ip);
-//     return (res.status(200).json({
-//         message: "Welcome To Genres",
-//     }));
-// });
+app.use(morgan('combined'));
 app.use('/genres/', genreRouter);
 
 // Export App..
