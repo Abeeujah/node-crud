@@ -8,7 +8,7 @@ const {
     saveGenre,
     putGenre,
     delGenre,
-} = require('../models/genre.model');
+} = require('../../models/genre/genre.model');
 
 // Genre Controller Functions
 // Get All Genres

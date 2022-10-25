@@ -10,7 +10,7 @@ async function getGenres() {
 }
 
 async function getGenre(name) {
-    return await genreModel.find({
+    return await genreModel.findOne({
         name,
     }, {
         '_id': 0,
@@ -41,6 +41,7 @@ async function delGenre(name) {
     });
 }
 
+// Export CRUD Functions..
 module.exports = {
     getGenres,
     getGenre,
