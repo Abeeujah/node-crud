@@ -1,5 +1,7 @@
 // Require Customer Model..
-const customerModel = require('./customer.mongo');
+const {
+    customerModel,
+} = require('./customer.mongo');
 
 // Database CRUD..
 async function getCustomers() {
@@ -42,29 +44,22 @@ async function addCustomer(customer) {
 
 async function updateCustomer(req) {
     const id = req.params.id;
-    if (id >= 22) {
+    const truth = id.length;
+    if (truth >= 22) {
         return await customerModel.findOneAndUpdate({
             $or: [
                 { '_id': id },
                 { name: id },
                 { phone: id },
             ],
-        }, {
-            name: req.body.name,
-            phone: req.body.phone,
-            isGold: req.body.isGold,
-        }, { new: true });
+        }, req.body , { new: true });
     } else {
         return await customerModel.findOneAndUpdate({
             $or: [
                 { name: id },
                 { phone: id },
             ],
-        }, {
-            name: req.body.name,
-            phone: req.body.phone,
-            isGold: req.body.isGold,
-        }, { new: true });
+        }, req.body , { new: true });
     }
     
 }

@@ -8,11 +8,13 @@ const {
 } = require('../../models/customer/customer.model');
 
 // Define HTTP Functions..
+// GET All Customers..
 async function httpGetAllCustomers(req, res) {
     const dbCustomers = await getCustomers();
     return(res.status(200).json(dbCustomers));
 }
 
+// GET a Customer..
 async function httpGetCustomer(req, res) {
     const customerId = req.params.id;
     const customer = await getCustomer(customerId);
@@ -24,6 +26,7 @@ async function httpGetCustomer(req, res) {
     return(res.status(200).json(customer));
 }
 
+// POST a Customer..
 async function httpAddCustomer(req, res) {
     const customer = req.body;
     const customerName = customer.name;
@@ -41,6 +44,7 @@ async function httpAddCustomer(req, res) {
     return(res.status(201).json(createdCustomer));
 }
 
+// PUT a Customer..
 async function httpUpdateCustomer(req, res) {
     const customerId = req.params.id;
     const customer = await getCustomer(customerId);
@@ -59,6 +63,7 @@ async function httpUpdateCustomer(req, res) {
     return(res.status(200).json(updatedCustomer));
 }
 
+// DELETE a Customer..
 async function httpDeleteCustomer(req, res) {
     const customerId = req.params.id;
     const customer = await getCustomer(customerId);

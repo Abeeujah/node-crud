@@ -1,5 +1,5 @@
 // Require Genre Model..
-const genreModel = require('./genre.mongo');
+const { genreModel } = require('./genre.mongo');
 
 // Database CRUD..
 async function getGenres() {

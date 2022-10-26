@@ -1,6 +1,3 @@
-// Require Express..
-const express = require('express');
-
 // Require Genre Model..
 const {
     getGenres,

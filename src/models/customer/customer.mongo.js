@@ -17,4 +17,11 @@ const customerSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Customer', customerSchema);
+// Init Customer Model..
+const customerModel = mongoose.model('Customer', customerSchema);
+
+// Export Schema and Model..
+module.exports = {
+    customerSchema,
+    customerModel,
+};
