@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // Define MongoUrl..
-const mongoUrl = `mongodb://127.0.0.1/vidly`;
+const mongoUrl = process.env.MONGO_URL;
 
 // Mongo EventEmitters..
 mongoose.connection.once('connection', () => {

@@ -1,5 +1,6 @@
 // Require HTTP Module..
 const http = require('http');
+require('dotenv').config();
 
 // Require app and services..
 const app = require('./app');
